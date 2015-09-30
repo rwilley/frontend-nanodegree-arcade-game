@@ -4,10 +4,10 @@ var Enemy = function() {
     // we've provided one for you to get started
     this.x = 2,
     this.y = 3,
-    //speed: 200 //speed in pixels per second
+    this.speed = 200, //speed in pixels per second
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = 'images/enemy-bug.png'
 };
 
 // Update the enemy's position, required method for game
@@ -16,8 +16,13 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x * dt;
     this.y * dt;
+    this.x = this.x + this.speed * dt;
+    if (this.x + 100 >= 505) {
+        this.x = -100;
+    }
+    
+
 };
 
 // Draw the enemy on the screen, required method for game
