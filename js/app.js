@@ -58,7 +58,20 @@ Player.prototype.handleInput = function(key){
             this.y += 100;
             break;
     }
+
+    //check boundry
+    if(this.x < 0) {
+        this.x = 0;
+    } else if (this.y < 0) {
+        this.y = 0;
+    } else if (this.x + 100 >= 505) {
+        this.x = 505-100;
+    } else if (this.y + 200 >= 606) {
+        this.y = 606 - 200;
+    }
 }
+
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
