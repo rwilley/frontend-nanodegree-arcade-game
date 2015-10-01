@@ -76,14 +76,22 @@ Player.prototype.handleInput = function(key){
     }
 }
 
-Player.prototype.checkForCollision = function() {
-    for(var i = 0; i < allEnemies.length; i++)
-        if (this.x < allEnemies[i].x + 100 && this.x + 100 > allEnemies[i] && this.y < allEnemies[i].this.y + 100 && this.y + 100 > allEnemies[i]) {
-            this.x = 400;
-            this.y = 400;
-            console.log("collision")
+Player.prototype.checkCollisions = function() {
+    for(var i = 0; i < allEnemies.length; i++) {
+        if (player.x < allEnemies[i].x + 50 &&
+		player.x + 50 > allEnemies[i].x &&
+		player.y < allEnemies[i].y + 50 &&
+		player.y + 50 > allEnemies[i].y) {
+            player.x = 400;
+            player.y = 400;
+            console.log("collision");
         }
-}
+	}
+};
+
+Player.prototype.update = function(){
+    checkCollisions();
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
