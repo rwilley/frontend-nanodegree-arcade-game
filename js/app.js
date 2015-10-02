@@ -47,16 +47,16 @@ Player.prototype.render = function(){
 Player.prototype.handleInput = function(key){ 
     switch(key) {
         case "left":
-            this.x -= 100;
+            this.x -= 40;
             break;
         case "up":
-            this.y -= 100;
+            this.y -= 40;
             break;
         case "right":
-            this.x += 100;
+            this.x += 40;
             break;
         case "down":
-            this.y += 100;
+            this.y += 40;
             break;
     }
 
@@ -78,15 +78,24 @@ Player.prototype.checkCollisions = function() {
         player.x + 50 > allEnemies[i].x &&
         player.y < allEnemies[i].y + 50 &&
         player.y + 50 > allEnemies[i].y) {
-            player.x = 400;
-            player.y = 400;
+            
             console.log("collision");
+            alert("Opps, a bug got you. Time to try again.")
         }
     }
 };
 
+Player.prototype.checkFinished = function() {
+    if(player.y < 2) {
+        alert("You WIN!")
+        player.x = 400;
+        player.y = 400;
+    }
+}
+
 Player.prototype.update = function(){
     Player.prototype.checkCollisions();
+    Player.prototype.checkFinished();
 };
 
 // Now instantiate your objects.
